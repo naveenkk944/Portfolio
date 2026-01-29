@@ -842,21 +842,12 @@ body {
     gap: 1.5rem;
 }
 
-.contact-form p {
-    margin: 0;
-}
-
-.contact-form label {
+.form-group {
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    font-weight: 500;
-    color: var(--text-color);
 }
 
 .contact-form input,
-.contact-form textarea,
-.contact-form select {
+.contact-form textarea {
     width: 100%;
     padding: 1rem;
     border: 2px solid #e0e0e0;
@@ -867,8 +858,7 @@ body {
 }
 
 .contact-form input:focus,
-.contact-form textarea:focus,
-.contact-form select:focus {
+.contact-form textarea:focus {
     outline: none;
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
