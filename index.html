@@ -1,861 +1,1113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naveen Kumar Kuruba - Data Scientist & AI/ML Engineer</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Naveen Kumar Kuruba | Data Scientist & AI/ML Engineer</title>
+    <meta name="description" content="Data Scientist & AI/ML Engineer specializing in GenAI, Computer Vision, OCR, and LLM-based systems">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #ec4899;
+            --accent: #06b6d4;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f172a;
+            overflow-x: hidden;
+        }
+        
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+        
+        .bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.15) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(139, 92, 246, 0.15) 0px, transparent 50%);
+            animation: pulse 10s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(99, 102, 241, 0.5);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            from { transform: translateY(100vh) translateX(0); }
+            to { transform: translateY(-100vh) translateX(100px); }
+        }
+        
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+        
+        .skill-tag {
+            transition: all 0.3s ease;
+        }
+        .skill-tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+        }
+        
+        .timeline-line {
+            background: linear-gradient(to bottom, #6366f1, #ec4899);
+        }
+        
+        .project-overlay {
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.95), transparent);
+        }
+        
+        .btn-glow {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #6366f1, #ec4899, #06b6d4);
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .btn-glow:hover::before {
+            opacity: 1;
+        }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .expandable-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        .expandable-content.active {
+            max-height: 2000px;
+        }
+        
+        .project-toggle {
+            transition: transform 0.3s;
+        }
+        .project-toggle.active {
+            transform: rotate(90deg);
+        }
+    </style>
 </head>
-<body>
+<body class="text-slate-300 antialiased">
+
+    <div class="bg-mesh"></div>
+    <div id="particles"></div>
+
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+    <nav class="fixed w-full z-50 glass border-b border-white/5 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-pink-500 flex items-center justify-center text-white font-bold text-lg">N</div>
+                    <span class="font-display font-bold text-white text-xl tracking-tight">Naveen<span class="text-indigo-400">.dev</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-white hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="#about" class="text-slate-300 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                        <a href="#experience" class="text-slate-300 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Experience</a>
+                        <a href="#projects" class="text-slate-300 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
+                        <a href="#skills" class="text-slate-300 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
+                        <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-full text-sm font-medium transition-all btn-glow">Contact Me</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-white/10 transition-colors">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
             </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#education" class="nav-link">Education</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
+        </div>
+        <div class="md:hidden hidden glass border-t border-white/5" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#about" class="text-slate-300 block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#experience" class="text-slate-300 block px-3 py-2 rounded-md text-base font-medium">Experience</a>
+                <a href="#projects" class="text-slate-300 block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                <a href="#contact" class="text-indigo-400 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <br>
-                <br>
-                <h1 class="hero-title">Naveen Kumar Kuruba</h1>
-                <p class="hero-subtitle">Data Scientist & AI/ML Engineer</p>
-                <p class="hero-description">Building production-grade AI/ML systems, computer vision, and LLM-based solutions</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="text-left space-y-8 reveal-text">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-indigo-500/30 text-indigo-300 text-sm font-medium">
+                        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                        Available for opportunities
+                    </div>
+
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Naveen Kumar Kuruba</h2>
+                        <p class="text-lg text-indigo-400 font-semibold">Data Scientist & AI/ML Engineer</p>
+                    </div>
+                    
+                    <h1 class="font-display text-5xl md:text-7xl font-bold text-white leading-tight">
+                        Building <span class="gradient-text" id="typing-text">Intelligent Systems</span><span class="typing-cursor"></span>
+                    </h1>
+                    <p class="text-xl text-slate-400 max-w-lg leading-relaxed">
+                        Data Scientist & AI/ML Engineer with 3+ years building production-grade computer vision, OCR, data pipelines, and LLM-based solutions that drive measurable business impact.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#projects" class="px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full text-white font-semibold hover:shadow-lg hover:shadow-indigo-500/25 transition-all transform hover:scale-105 btn-glow">
+                            View Projects
+                        </a>
+                        <a href="#contact" class="px-8 py-4 glass rounded-full text-white font-semibold hover:bg-white/10 transition-all border border-white/10">
+                            Get In Touch
+                        </a>
+                    </div>
+                    <div class="flex gap-4 pt-4">
+                        <a href="https://github.com/nkuruba" target="_blank" class="w-12 h-12 rounded-full glass flex items-center justify-center text-slate-400 hover:text-white hover:border-indigo-500/50 transition-all border border-white/5">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/nkuruba" target="_blank" class="w-12 h-12 rounded-full glass flex items-center justify-center text-slate-400 hover:text-white hover:border-indigo-500/50 transition-all border border-white/5">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="mailto:nkuruba2000@gmail.com" class="w-12 h-12 rounded-full glass flex items-center justify-center text-slate-400 hover:text-white hover:border-indigo-500/50 transition-all border border-white/5">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="hero-image-social">
-                
-                <img src="images/assets/profile.jpeg" alt="Profile Photo" style="width:160px; height:160px; object-fit:cover; border-radius:50%; box-shadow:0 4px 16px rgba(0,0,0,0.15); margin-top:18px;" />
-                <div class="hero-social">
-                    <a href="https://github.com" class="social-icon"><i class="fab fa-github"></i></a>
-                    <a href="https://linkedin.com/in/nkuruba" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <div class="relative reveal-image flex justify-center">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80">
+                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/30 to-pink-500/30 rounded-full blur-3xl animate-pulse"></div>
+                        <img src="images/assets/profile.jpeg" alt="Naveen Kumar Kuruba" class="relative w-full h-full object-cover rounded-full border-4 border-white/10 shadow-2xl">
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-slate-500 text-2xl"></i>
+        </div>
+    </section>
 
+    <!-- Stats Section -->
+    <section class="py-20 glass border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center reveal">
+                    <div class="text-4xl md:text-5xl font-display font-bold gradient-text mb-2"><span data-count="60">0</span>%</div>
+                    <div class="text-sm text-slate-400 uppercase tracking-wider">Productivity Boost</div>
+                </div>
+                <div class="text-center reveal">
+                    <div class="text-4xl md:text-5xl font-display font-bold gradient-text mb-2">$<span data-count="100">0</span>M+</div>
+                    <div class="text-sm text-slate-400 uppercase tracking-wider">Cost Savings</div>
+                </div>
+                <div class="text-center reveal">
+                    <div class="text-4xl md:text-5xl font-display font-bold gradient-text mb-2"><span data-count="99">0</span>%</div>
+                    <div class="text-sm text-slate-400 uppercase tracking-wider">Field Accuracy</div>
+                </div>
+                <div class="text-center reveal">
+                    <div class="text-4xl md:text-5xl font-display font-bold gradient-text mb-2" data-count="200">0+</div>
+                    <div class="text-sm text-slate-400 uppercase tracking-wider">Developers Helped</div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-highlights">
-                        <div class="highlight-item">
-                            <h3>3+</h3>
-                            <p>Years Professional</p>
-                        </div>
-                        <div class="highlight-item">
-                            <h3>$100M+</h3>
-                            <p>Impact Created</p>
-                        </div>
-                        <div class="highlight-item">
-                            <h3>200+</h3>
-                            <p>Developers Helped</p>
-                        </div>
-                    </div>
-            <div class="about-content">
-                
-                <div class="about-text">
-                    <p><strong>Data Scientist & AI/ML Engineer</strong> with 3+ years of hands-on experience building production-grade computer vision, OCR, data pipelines, and LLM-based machine learning systems. Currently at Dover Corporation, architecting GenAI-powered developer experience platforms and scalable ML solutions that drive measurable business impact.</p>
-                    <p><strong>Core Expertise:</strong> Python, TensorFlow, PyTorch, LLMs, Prompt Engineering, RAG, MCP, Agentic Workflows, Computer Vision, OpenCV, YOLOv8, OCR/Tesseract, and Azure Cloud (VM, SQL, Databricks, Data Factory). Specialized in end-to-end ML systems from research through production deployment.</p>
+    <section id="about" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-display text-4xl font-bold text-white mb-4">About <span class="gradient-text">Me</span></h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-16 items-start">
+                <div class="reveal space-y-6">
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        <strong class="text-white">Data Scientist & AI/ML Engineer</strong> with 3+ years of hands-on experience building production-grade computer vision, OCR, data pipelines, and LLM-based machine learning systems. Currently at <strong class="text-indigo-400">Dover Corporation</strong>, architecting GenAI-powered developer experience platforms and scalable ML solutions.
+                    </p>
+                    <p class="text-slate-400 leading-relaxed">
+                        <strong class="text-white">Core Expertise:</strong> Python, TensorFlow, PyTorch, LLMs, Prompt Engineering, RAG, MCP, Agentic Workflows, Computer Vision, OpenCV, YOLOv8, OCR/Tesseract, and Azure Cloud (VM, SQL, Databricks, Data Factory). Specialized in end-to-end ML systems from research through production deployment.
+                    </p>
                 </div>
-                <div class="about-highlights-section">
-                    
-                    <p><strong>Specializations:</strong> Custom multilingual OCR engines, intelligent developer tools, multimodal models, enterprise solutions, supply chain optimization, document intelligence, anomaly detection, and edge device optimization.</p>
-                    <p><strong>Impact Metrics:</strong> Improved counterfeit detection accuracy from 80% → 95%, boosted developer productivity by 60% across 120+ engineers, drove $100M+ procurement cost savings, reduced infrastructure costs by 70%, achieved 99%+ field-level accuracy in document processing, and optimized medical package detection with 60% latency reduction.</p>
+                <div class="reveal space-y-6">
+                    <p class="text-slate-400 leading-relaxed">
+                        <strong class="text-white">Specializations:</strong> Custom multilingual OCR engines, intelligent developer tools, multimodal models, enterprise solutions, supply chain optimization, document intelligence, anomaly detection, and edge device optimization.
+                    </p>
+                
+                    <p class="text-slate-400 leading-relaxed">
+                        <strong class="text-white">Impact Metrics:</strong> Improved counterfeit detection accuracy from 80% → 95%, boosted developer productivity by 60% across 120+ engineers, drove $100M+ procurement cost savings, reduced infrastructure costs by 70%, achieved 99%+ field-level accuracy in document processing, and optimized medical package detection with 60% latency reduction.
+                    </p>
+                    <!-- <div class="grid grid-cols-2 gap-4 mt-6">
+                        <div class="glass rounded-lg p-4 text-center">
+                            <div class="text-2xl font-bold text-white">3+</div>
+                            <div class="text-xs text-slate-400">Years Professional</div>
+                        </div>
+                        <div class="glass rounded-lg p-4 text-center">
+                            <div class="text-2xl font-bold text-white">$100M+</div>
+                            <div class="text-xs text-slate-400">Impact Created</div>
+                        </div> -->
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
-            <div class="experience-timeline">
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div class="logo-role-section">
-                            <img src="images/assets/dover-logo.png" alt="Dover Corporation" class="company-logo" />
-                            <div class="role-text">
-                                <h3>Data Scientist</h3>
-                                <span class="company">Dover Corporation</span>
+    <section id="experience" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-500/5 to-transparent"></div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-display text-4xl font-bold text-white mb-4">Professional <span class="gradient-text">Experience</span></h2>
+            </div>
+            
+            <div class="relative space-y-12">
+                <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 timeline-line rounded-full"></div>
+                
+                <!-- Data Scientist -->
+                <div class="relative reveal">
+                    <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-indigo-500 rounded-full border-4 border-slate-900 z-10"></div>
+                    <div class="ml-12 md:ml-0 md:mr-[50%] md:pr-12">
+                        <div class="glass-card rounded-2xl p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Data Scientist</h3>
+                                    <p class="text-indigo-400 font-medium">Dover Corporation</p>
+                                </div>
+                                <span class="text-slate-500 text-sm">Aug 2024 – Present</span>
                             </div>
+                            <ul class="text-sm text-slate-400 space-y-2 list-disc list-inside">
+                                <li>Architected a GenAI-powered developer experience platform (DevEx) boosting productivity by 60% across 120+ engineers</li>
+                                <li>Leveraged RAG and deployed LLM models on Azure VMs with continuous optimization improving concurrency and accuracy</li>
+                                <li>Modernized medical counterfeit detection improving accuracy from 80% to 95%, reducing latency by 60%</li>
+                                <li>Designed multilingual OCR engine supporting complex documents, curvilinear surfaces, and structured tables</li>
+                                <li>Delivered enterprise CTB (Clear-to-Build) solution for IFS ERP supporting high-volume order processing ($3M+ savings)</li>
+                                <li>Built document extraction workflow achieving 99%+ field-level accuracy with 70% lower infrastructure cost</li>
+                            </ul>
                         </div>
-                        <p class="date">Aug 2024 – Present</p>
                     </div>
-                    <ul class="experience-details">
-                        <li>Architected a GenAI-powered developer experience platform (DevEx) boosting productivity by 60% across 120+ engineers</li>
-                        <li>Leveraged RAG and deployed LLM models on Azure VMs with continuous optimization improving concurrency and accuracy</li>
-                        <li>Modernized medical counterfeit detection improving accuracy from 80% to 95%, reducing latency by 60%</li>
-                        <li>Designed multilingual OCR engine supporting complex documents, curvilinear surfaces, and structured tables</li>
-                        <li>Delivered enterprise CTB (Clear-to-Build) solution for IFS ERP supporting high-volume order processing</li>
-                        <li>Built document extraction workflow achieving 99%+ field-level accuracy with 70% lower infrastructure cost</li>
-                    </ul>
                 </div>
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div class="logo-role-section">
-                            <img src="images/assets/dover-logo.png" alt="Dover Corporation" class="company-logo" />
-                            <div class="role-text">
-                                <h3>AI/ML Intern</h3>
-                                <span class="company">Dover Corporation</span>
+
+                <!-- AI/ML Intern -->
+                <div class="relative reveal">
+                    <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-purple-500 rounded-full border-4 border-slate-900 z-10"></div>
+                    <div class="ml-12 md:ml-0 md:ml-[50%] md:pl-12">
+                        <div class="glass-card rounded-2xl p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">AI/ML Intern</h3>
+                                    <p class="text-purple-400 font-medium">Dover Corporation</p>
+                                </div>
+                                <span class="text-slate-500 text-sm">May 2023 – Aug 2023</span>
                             </div>
+                            <ul class="text-sm text-slate-400 space-y-2 list-disc list-inside">
+                                <li>Built ML platform for image annotation, model training, monitoring, and metrics visualization</li>
+                                <li>Enabled real-time inference on Android and iOS devices with feedback loops</li>
+                                <li>Collaborated cross-functionally between teams using agile practices</li>
+                            </ul>
                         </div>
-                        <p class="date">May 2023 – Aug 2023</p>
                     </div>
-                    <ul class="experience-details">
-                        <li>Built ML platform for image annotation, model training, monitoring, and metrics visualization</li>
-                        <li>Enabled real-time inference on Android and iOS devices with feedback loops</li>
-                        <li>Collaborated cross-functionally between teams using agile practices</li>
-                    </ul>
                 </div>
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div class="logo-role-section">
-                            <img src="images/assets/dover-logo.png" alt="Dover India Pvt Ltd" class="company-logo" />
-                            <div class="role-text">
-                                <h3>Software Engineer</h3>
-                                <span class="company">Dover India Pvt Ltd</span>
+
+                <!-- Software Engineer -->
+                <div class="relative reveal">
+                    <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-pink-500 rounded-full border-4 border-slate-900 z-10"></div>
+                    <div class="ml-12 md:ml-0 md:mr-[50%] md:pr-12">
+                        <div class="glass-card rounded-2xl p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Software Engineer</h3>
+                                    <p class="text-pink-400 font-medium">Dover India Pvt Ltd</p>
+                                </div>
+                                <span class="text-slate-500 text-sm">Aug 2021 – Aug 2022</span>
                             </div>
+                            <ul class="text-sm text-slate-400 space-y-2 list-disc list-inside">
+                                <li>Led Neo4j-based supplier recommendation system driving $100M in procurement cost savings</li>
+                                <li>Automated ETL pipelines using Azure Data Factory reducing manual processing by 70%</li>
+                                <li>Processed and normalized 4M+ supplier records for Master Data Management platform</li>
+                                <li>Automated CDP data loads on Azure SQL for scalable analytics and enterprise reporting</li>
+                            </ul>
                         </div>
-                        <p class="date">Aug 2021 – Aug 2022</p>
                     </div>
-                    <ul class="experience-details">
-                        <li>Led Neo4j-based supplier recommendation system driving $100M in procurement cost savings</li>
-                        <li>Automated ETL pipelines using Azure Data Factory reducing manual processing by 70%</li>
-                        <li>Processed and normalized 4M+ supplier records for Master Data Management platform</li>
-                        <li>Automated CDP data loads on Azure SQL for scalable analytics and enterprise reporting</li>
-                    </ul>
                 </div>
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div class="logo-role-section">
-                            <img src="images/assets/sandlogic-logo.jpeg" alt="SandLogic Technologies" class="company-logo" />
-                            <div class="role-text">
-                                <h3>AI Developer Intern</h3>
-                                <span class="company">SandLogic Technologies</span>
+
+                <!-- Earlier Positions -->
+                <div class="relative reveal">
+                    <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-slate-900 z-10"></div>
+                    <div class="ml-12 md:ml-0 md:ml-[50%] md:pl-12">
+                        <div class="glass-card rounded-2xl p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-white">Earlier Experience</h3>
+                                <span class="text-slate-500 text-sm"> May 2020 – Jun 2021</span>
+                            </div>
+                            <div class="space-y-4">
+                                <div>
+                                    <p class="text-cyan-400 font-medium">AI Developer Intern @ SandLogic Technologies</p>
+                                    <p class="text-sm text-slate-400">Developed deep learning backbone networks for image classification with API-driven workflows. Improved object dimension measurement accuracy by fusing auxiliary sensor data on edge devices.</p>
+                                </div>
+                                <div>
+                                    <p class="text-cyan-400 font-medium">Python Developer Intern @ MedevPlus</p>
+                                    <p class="text-sm text-slate-400">Built OpenCV-based OCT image processing pipeline for retinal nerve fiber layer thickness calculation. Improved diagnostic precision for early glaucoma detection.</p>
+                                </div>
                             </div>
                         </div>
-                        <p class="date">Nov 2020 – Jun 2021</p>
                     </div>
-                    <ul class="experience-details">
-                        <li>Developed deep learning backbone networks for image classification with API-driven workflows</li>
-                        <li>Improved object dimension measurement accuracy by fusing auxiliary sensor data on edge devices</li>
-                    </ul>
-                </div>
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div class="logo-role-section">
-                            <img src="images/assets/medev-plus-logo.jpeg" alt="MedevPlus" class="company-logo" />
-                            <div class="role-text">
-                                <h3>Python Developer Intern</h3>
-                                <span class="company">MedevPlus</span>
-                            </div>
-                        </div>
-                        <p class="date">May 2020 – Nov 2020</p>
-                    </div>
-                    <ul class="experience-details">
-                        <li>Built OpenCV-based OCT image processing pipeline for retinal nerve fiber layer thickness calculation</li>
-                        <li>Improved diagnostic precision for early glaucoma detection</li>
-                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Education Section -->
-    <section id="education" class="education">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="education-grid">
-                <div class="education-card">
-                    <h3>Master of Science in Computer Science</h3>
-                    <div class="education-header-row">
-                        <div>
-                            <p class="education-school">Cleveland State University</p>
-                            <p class="education-date">2024</p>
+    <!-- Projects Section -->
+    <section id="projects" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-display text-4xl font-bold text-white mb-4">Featured <span class="gradient-text">Projects</span></h2>
+                <p class="text-slate-400">Click on any project to view detailed information</p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- GenAI Projects -->
+                <div class="reveal">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                        <i class="fas fa-robot text-indigo-400"></i> Generative AI & LLM
+                    </h3>
+                    <div class="glass-card rounded-2xl overflow-hidden">
+                        <div class="p-6 cursor-pointer hover:bg-white/5 transition-colors" onclick="toggleProject(this)">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h4 class="text-xl font-bold text-white">Developer Experience Platform (GenAI + RAG)</h4>
+                                    <p class="text-indigo-400 text-sm mt-1">Dover Digital Labs • Agentic AI Architecture</p>
+                                </div>
+                                <i class="fas fa-chevron-down project-toggle text-slate-400"></i>
+                            </div>
+                        </div>
+                        <div class="expandable-content px-6 pb-6">
+                            <ul class="text-slate-400 space-y-2 text-sm mb-4 list-disc list-inside">
+                                <li>Architected and led the development of a GenAI-powered Developer Experience (DevEx) platform consisting of 11 intelligent agents designed for role-based enterprise workflows across 5+ user profiles</li>
+                                <li>Designed an agent-based GenAI architecture supporting 200+ active users, enabling scalable, secure, and persona-driven interactions</li>
+                                <li>Built developer productivity agents: Coding Assist Agent for automated code clarity, refactoring suggestions, and documentation generation; Git Scanner Agent to analyze repository structures and accelerate onboarding by 50%</li>
+                                <li>Implemented engineering intelligence agents: PDF QA Agent for natural-language querying across technical specifications; Code Quality Agent to detect technical debt and maintainability risks</li>
+                                <li>Developed project management automation via Jira Agent that auto-created and managed tickets, integrated Jira and Confluence workflows, reducing manual task creation effort by 60%</li>
+                                <li>Built QA automation agents including Test Case Generation Agent that converts requirements into structured test cases, improving test coverage by 40%</li>
+                                <li>Integrated RAG-based LLM pipelines with enterprise knowledge sources, improving response accuracy by 35%</li>
+                            </ul>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-indigo-500/20 text-indigo-300 rounded-full text-xs border border-indigo-500/30">Python</span>
+                                <span class="px-3 py-1 bg-indigo-500/20 text-indigo-300 rounded-full text-xs border border-indigo-500/30">RAG</span>
+                                <span class="px-3 py-1 bg-indigo-500/20 text-indigo-300 rounded-full text-xs border border-indigo-500/30">Agentic AI</span>
+                                <span class="px-3 py-1 bg-indigo-500/20 text-indigo-300 rounded-full text-xs border border-indigo-500/30">Azure</span>
+                                <span class="px-3 py-1 bg-indigo-500/20 text-indigo-300 rounded-full text-xs border border-indigo-500/30">MCP</span>
+                            </div>
                         </div>
                     </div>
-                    <ul class="education-details">
-                        <li><strong>Location:</strong> Cleveland, OH</li>
-                        <li><strong>GPA:</strong> 3.65 / 4.0</li>
-                        <li>Advanced coursework in Machine Learning, Deep Learning, and Computer Vision</li>
-                    </ul>
                 </div>
-                <div class="education-card">
-                    <h3>Bachelor of Engineering in Electronics & Communication</h3>
-                    <div class="education-header-row">
-                        <div>
-                            <p class="education-school">Visvesvaraya Technological University</p>
-                            <p class="education-date">2021</p>
+
+                <!-- Computer Vision Projects -->
+                <div class="reveal">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                        <i class="fas fa-eye text-pink-400"></i> Computer Vision & Deep Learning
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Counterfeit Detection -->
+                        <div class="glass-card rounded-2xl overflow-hidden">
+                            <div class="p-6 cursor-pointer hover:bg-white/5 transition-colors" onclick="toggleProject(this)">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="text-lg font-bold text-white">Counterfeit Detection Algorithm</h4>
+                                    <i class="fas fa-chevron-down project-toggle text-slate-400"></i>
+                                </div>
+                            </div>
+                            <div class="expandable-content px-6 pb-6">
+                                <p class="text-slate-400 text-sm mb-4">Re-engineered legacy rules-based matching engine with advanced computer vision pipelines and multilingual OCR. Improved accuracy from 80% to 95%, reduced latency by 60%, now supporting 150+ SKUs with forensic anomaly detection techniques.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-pink-500/20 text-pink-300 rounded text-xs">OCR</span>
+                                    <span class="px-2 py-1 bg-pink-500/20 text-pink-300 rounded text-xs">Computer Vision</span>
+                                    <span class="px-2 py-1 bg-pink-500/20 text-pink-300 rounded text-xs">Python</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ThermovisionAI -->
+                        <div class="glass-card rounded-2xl overflow-hidden">
+                            <div class="p-6 cursor-pointer hover:bg-white/5 transition-colors" onclick="toggleProject(this)">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="text-lg font-bold text-white">ThermovisionAI</h4>
+                                    <i class="fas fa-chevron-down project-toggle text-slate-400"></i>
+                                </div>
+                            </div>
+                            <div class="expandable-content px-6 pb-6">
+                                <p class="text-slate-400 text-sm mb-4">Applied YOLOv8 with fused thermal and visual imagery to detect objects near autonomous vehicles. Conducted comparative analysis to improve detection accuracy in challenging thermal imaging scenarios.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-pink-500/20 text-pink-300 rounded text-xs">YOLOv8</span>
+                                    <span class="px-2 py-1 bg-pink-500/20 text-pink-300 rounded text-xs">Thermal Imaging</span>
+                                    <span class="px-2 py-1 bg-pink-500/20 text-pink-300 rounded text-xs">PyTorch</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- MobileWizard -->
+                        <div class="glass-card rounded-2xl overflow-hidden">
+                            <div class="p-6 cursor-pointer hover:bg-white/5 transition-colors" onclick="toggleProject(this)">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="text-lg font-bold text-white">MobileWizard - Self Training App</h4>
+                                    <i class="fas fa-chevron-down project-toggle text-slate-400"></i>
+                                </div>
+                            </div>
+                            <div class="expandable-content px-6 pb-6">
+                                <ul class="text-slate-400 text-sm mb-4 space-y-1 list-disc list-inside">
+                                    <li>Flask-based web app for image annotation, model training, parameter monitoring using TensorFlow Lite Model Maker</li>
+                                    <li>Created iOS and Android apps in Swift and Kotlin enabling real-time predictions with dynamic validation and retraining</li>
+                                    <li>Designed intuitive interfaces allowing users to upload images, validate predictions, and submit for model refinement</li>
+                                </ul>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-pink-500/20 text-pink-300 rounded text-xs">Flask</span>
+                                    <span class="px-2 py-1 bg-pink-500/20 text-pink-300 rounded text-xs">TensorFlow Lite</span>
+                                    <span class="px-2 py-1 bg-pink-500/20 text-pink-300 rounded text-xs">Swift</span>
+                                    <span class="px-2 py-1 bg-pink-500/20 text-pink-300 rounded text-xs">Kotlin</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Classification Backbone -->
+                        <div class="glass-card rounded-2xl overflow-hidden">
+                            <div class="p-6 cursor-pointer hover:bg-white/5 transition-colors" onclick="toggleProject(this)">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="text-lg font-bold text-white">Classification Backbone Networks</h4>
+                                    <i class="fas fa-chevron-down project-toggle text-slate-400"></i>
+                                </div>
+                            </div>
+                            <div class="expandable-content px-6 pb-6">
+                                <ul class="text-slate-400 text-sm mb-4 space-y-1 list-disc list-inside">
+                                    <li>Developed comprehensive codebase for cutting-edge classification backbone networks</li>
+                                    <li>Implemented service files functioning as APIs offering streamlined model training solutions</li>
+                                    <li>Built system compatible with wide array of TensorFlow classification models</li>
+                                </ul>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-pink-500/20 text-pink-300 rounded text-xs">TensorFlow</span>
+                                    <span class="px-2 py-1 bg-pink-500/20 text-pink-300 rounded text-xs">API Development</span>
+                                    <span class="px-2 py-1 bg-pink-500/20 text-pink-300 rounded text-xs">Deep Learning</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Object Measurement -->
+                        <div class="glass-card rounded-2xl overflow-hidden">
+                            <div class="p-6 cursor-pointer hover:bg-white/5 transition-colors" onclick="toggleProject(this)">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="text-lg font-bold text-white">Object Measurement Prediction</h4>
+                                    <i class="fas fa-chevron-down project-toggle text-slate-400"></i>
+                                </div>
+                            </div>
+                            <div class="expandable-content px-6 pb-6">
+                                <ul class="text-slate-400 text-sm mb-4 space-y-1 list-disc list-inside">
+                                    <li>Research on advanced methods for predicting measurements without requiring reference objects</li>
+                                    <li>Leveraged ancillary sensors (accelerometer, gyroscope, proximity) for accurate dimension calculation</li>
+                                    <li>Developed pipeline for finding accurate measurements in real-time scenarios</li>
+                                </ul>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-pink-500/20 text-pink-300 rounded text-xs">Computer Vision</span>
+                                    <span class="px-2 py-1 bg-pink-500/20 text-pink-300 rounded text-xs">Mobile Sensors</span>
+                                    <span class="px-2 py-1 bg-pink-500/20 text-pink-300 rounded text-xs">Research</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rice Disease -->
+                        <div class="glass-card rounded-2xl overflow-hidden">
+                            <div class="p-6 cursor-pointer hover:bg-white/5 transition-colors" onclick="toggleProject(this)">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="text-lg font-bold text-white">Rice Plant Disease Detection</h4>
+                                    <i class="fas fa-chevron-down project-toggle text-slate-400"></i>
+                                </div>
+                            </div>
+                            <div class="expandable-content px-6 pb-6">
+                                <ul class="text-slate-400 text-sm mb-4 space-y-1 list-disc list-inside">
+                                    <li>Trained Convolutional Neural Networks for detection of healthy and diseased rice leaves</li>
+                                    <li>Developed classification capabilities for 4 distinct disease types</li>
+                                    <li>Built computer vision pipeline enabling automated disease identification for agricultural productivity</li>
+                                </ul>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-pink-500/20 text-pink-300 rounded text-xs">CNN</span>
+                                    <span class="px-2 py-1 bg-pink-500/20 text-pink-300 rounded text-xs">Agriculture</span>
+                                    <span class="px-2 py-1 bg-pink-500/20 text-pink-300 rounded text-xs">Python</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <ul class="education-details">
-                        <li><strong>Location:</strong> Karnataka, India</li>
-                        <li><strong>GPA:</strong> 8.67 / 10.0</li>
-                        <li>Specialization in signal processing and digital electronics</li>
-                    </ul>
+                </div>
+
+                <!-- Data Engineering Projects -->
+                <div class="reveal">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                        <i class="fas fa-database text-cyan-400"></i> Data Engineering & Analytics
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- CTB -->
+                        <div class="glass-card rounded-2xl overflow-hidden">
+                            <div class="p-6 cursor-pointer hover:bg-white/5 transition-colors" onclick="toggleProject(this)">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="text-lg font-bold text-white">Clear-to-Build (CTB) for IFS ERP</h4>
+                                    <i class="fas fa-chevron-down project-toggle text-slate-400"></i>
+                                </div>
+                            </div>
+                            <div class="expandable-content px-6 pb-6">
+                                <ul class="text-slate-400 text-sm mb-4 space-y-1 list-disc list-inside">
+                                    <li>Designed Python-based CTB planning module using core MRP principles for production readiness decisions</li>
+                                    <li>Implemented automated shortage identification logic analyzing demand, inventory, and supply data</li>
+                                    <li>Built time-phased shortage analysis framework with dynamic prioritization</li>
+                                    <li>Generated intelligent CTB schedule identifying fully available orders ready for manufacturing</li>
+                                </ul>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-cyan-500/20 text-cyan-300 rounded text-xs">Python</span>
+                                    <span class="px-2 py-1 bg-cyan-500/20 text-cyan-300 rounded text-xs">ERP</span>
+                                    <span class="px-2 py-1 bg-cyan-500/20 text-cyan-300 rounded text-xs">Azure Databricks</span>
+                                    <span class="px-2 py-1 bg-cyan-500/20 text-cyan-300 rounded text-xs">MRP</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Supplier Recommendation -->
+                        <div class="glass-card rounded-2xl overflow-hidden">
+                            <div class="p-6 cursor-pointer hover:bg-white/5 transition-colors" onclick="toggleProject(this)">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="text-lg font-bold text-white">Supplier Recommendation System</h4>
+                                    <i class="fas fa-chevron-down project-toggle text-slate-400"></i>
+                                </div>
+                            </div>
+                            <div class="expandable-content px-6 pb-6">
+                                <ul class="text-slate-400 text-sm mb-4 space-y-1 list-disc list-inside">
+                                    <li>Built Python-based recommendation engine and replicated logic with Neo4j graph database</li>
+                                    <li>Analyzed business value, productivity metrics, order volumes, and delivery performance</li>
+                                    <li>Transformed company's supplier relationships resulting in $100M annual cost savings</li>
+                                </ul>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-cyan-500/20 text-cyan-300 rounded text-xs">Neo4j</span>
+                                    <span class="px-2 py-1 bg-cyan-500/20 text-cyan-300 rounded text-xs">Graph Databases</span>
+                                    <span class="px-2 py-1 bg-cyan-500/20 text-cyan-300 rounded text-xs">Python</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- MDM -->
+                        <div class="glass-card rounded-2xl overflow-hidden md:col-span-2">
+                            <div class="p-6 cursor-pointer hover:bg-white/5 transition-colors" onclick="toggleProject(this)">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="text-lg font-bold text-white">Master Data Management Platform</h4>
+                                    <i class="fas fa-chevron-down project-toggle text-slate-400"></i>
+                                </div>
+                            </div>
+                            <div class="expandable-content px-6 pb-6">
+                                <ul class="text-slate-400 text-sm mb-4 space-y-1 list-disc list-inside">
+                                    <li>Orchestrated collection, transformation, and loading of data from diverse government sources using Python-based web scraping</li>
+                                    <li>Utilized Python to map company names, subsidiaries, and establish transparent parent-company relationships</li>
+                                    <li>Spearheaded integration of robust order mapping system creating linkages between orders and parent companies</li>
+                                    <li>Automated data loading to Azure SQL Database using Azure Databricks and Data Factory pipelines with daily updates</li>
+                                </ul>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-cyan-500/20 text-cyan-300 rounded text-xs">Python</span>
+                                    <span class="px-2 py-1 bg-cyan-500/20 text-cyan-300 rounded text-xs">Azure Data Factory</span>
+                                    <span class="px-2 py-1 bg-cyan-500/20 text-cyan-300 rounded text-xs">SQL</span>
+                                    <span class="px-2 py-1 bg-cyan-500/20 text-cyan-300 rounded text-xs">Web Scraping</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Healthcare Projects -->
+                <div class="reveal">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                        <i class="fas fa-heartbeat text-rose-400"></i> Healthcare & Medical AI
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="glass-card rounded-2xl overflow-hidden">
+                            <div class="p-6 cursor-pointer hover:bg-white/5 transition-colors" onclick="toggleProject(this)">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="text-lg font-bold text-white">Health Report Summarization</h4>
+                                    <i class="fas fa-chevron-down project-toggle text-slate-400"></i>
+                                </div>
+                            </div>
+                            <div class="expandable-content px-6 pb-6">
+                                <ul class="text-slate-400 text-sm mb-4 space-y-1 list-disc list-inside">
+                                    <li>Led development of Flask-based web application for medical report analysis with advanced image segmentation</li>
+                                    <li>Integrated Tesseract OCR ensuring high-precision text extraction from diverse medical documents</li>
+                                    <li>Implemented key-value and parameter extraction with summarization module generating comprehensive overviews</li>
+                                    <li>Incorporated language localization feature for converting text into preferred languages</li>
+                                </ul>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-rose-500/20 text-rose-300 rounded text-xs">Flask</span>
+                                    <span class="px-2 py-1 bg-rose-500/20 text-rose-300 rounded text-xs">OCR</span>
+                                    <span class="px-2 py-1 bg-rose-500/20 text-rose-300 rounded text-xs">NLP</span>
+                                    <span class="px-2 py-1 bg-rose-500/20 text-rose-300 rounded text-xs">Medical Imaging</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card rounded-2xl overflow-hidden">
+                            <div class="p-6 cursor-pointer hover:bg-white/5 transition-colors" onclick="toggleProject(this)">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="text-lg font-bold text-white">Early Glaucoma Detection</h4>
+                                    <i class="fas fa-chevron-down project-toggle text-slate-400"></i>
+                                </div>
+                            </div>
+                            <div class="expandable-content px-6 pb-6">
+                                <ul class="text-slate-400 text-sm mb-4 space-y-1 list-disc list-inside">
+                                    <li>Developed advanced OCT image processing pipeline for retinal nerve fiber layer thickness calculation using OpenCV</li>
+                                    <li>Research focused on early glaucoma detection through precise medical image analysis</li>
+                                    <li>Implemented automated diagnostic algorithms enhancing precision for early disease detection</li>
+                                </ul>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-rose-500/20 text-rose-300 rounded text-xs">OpenCV</span>
+                                    <span class="px-2 py-1 bg-rose-500/20 text-rose-300 rounded text-xs">Medical Imaging</span>
+                                    <span class="px-2 py-1 bg-rose-500/20 text-rose-300 rounded text-xs">Healthcare</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Full Stack -->
+                <div class="reveal">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                        <i class="fas fa-laptop-code text-purple-400"></i> Full-Stack Development
+                    </h3>
+                    <div class="glass-card rounded-2xl overflow-hidden">
+                        <div class="p-6 cursor-pointer hover:bg-white/5 transition-colors" onclick="toggleProject(this)">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-lg font-bold text-white">EduLearn - Online Classroom Platform</h4>
+                                <i class="fas fa-chevron-down project-toggle text-slate-400"></i>
+                            </div>
+                        </div>
+                        <div class="expandable-content px-6 pb-6">
+                            <ul class="text-slate-400 text-sm mb-4 space-y-1 list-disc list-inside">
+                                <li>Developed robust web application utilizing Angular, replicating Google Classroom functionalities</li>
+                                <li>Seamlessly mimicked core functionalities providing familiar online learning environment</li>
+                                <li>Incorporated innovative Discussion Groups feature enabling collaborative discussions</li>
+                                <li>Designed intuitive UI with focus on accessibility and seamless navigation</li>
+                            </ul>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-purple-500/20 text-purple-300 rounded text-xs">Angular</span>
+                                <span class="px-2 py-1 bg-purple-500/20 text-purple-300 rounded text-xs">TypeScript</span>
+                                <span class="px-2 py-1 bg-purple-500/20 text-purple-300 rounded text-xs">EdTech</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Skills & Technologies</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Programming Languages</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">R</span>
-                        <span class="tag">C++</span>
-                        <span class="tag">Shell Scripting</span>
-                        <span class="tag">SQL</span>
-                        <span class="tag">JavaScript</span>
+    <section id="skills" class="py-24 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/5 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-display text-4xl font-bold text-white mb-4">Technical <span class="gradient-text">Skills</span></h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="glass-card rounded-2xl p-6 reveal">
+                    <h3 class="text-lg font-bold text-white mb-4">Programming Languages</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1 bg-indigo-500/20 text-indigo-300 rounded-full text-sm border border-indigo-500/30">Python</span>
+                        <span class="skill-tag px-3 py-1 bg-indigo-500/20 text-indigo-300 rounded-full text-sm border border-indigo-500/30">R</span>
+                        <span class="skill-tag px-3 py-1 bg-indigo-500/20 text-indigo-300 rounded-full text-sm border border-indigo-500/30">C++</span>
+                        <span class="skill-tag px-3 py-1 bg-indigo-500/20 text-indigo-300 rounded-full text-sm border border-indigo-500/30">Shell Scripting</span>
+                        <span class="skill-tag px-3 py-1 bg-indigo-500/20 text-indigo-300 rounded-full text-sm border border-indigo-500/30">SQL</span>
+                        <span class="skill-tag px-3 py-1 bg-indigo-500/20 text-indigo-300 rounded-full text-sm border border-indigo-500/30">JavaScript</span>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3>Generative AI & LLMs</h3>
-                    <div class="skill-tags">
-                        <span class="tag">LLM Fine-tuning</span>
-                        <span class="tag">Prompt Engineering</span>
-                        <span class="tag">RAG (Retrieval-Augmented Generation)</span>
-                        <span class="tag">Model Context Protocol (MCP)</span>
-                        <span class="tag">Agentic Workflows</span>
-                        <span class="tag">LangChain</span>
-                        <span class="tag">Vector Databases</span>
+
+                <div class="glass-card rounded-2xl p-6 reveal">
+                    <h3 class="text-lg font-bold text-white mb-4">Generative AI & LLMs</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm border border-purple-500/30">LLM Fine-tuning</span>
+                        <span class="skill-tag px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm border border-purple-500/30">Prompt Engineering</span>
+                        <span class="skill-tag px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm border border-purple-500/30">RAG</span>
+                        <span class="skill-tag px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm border border-purple-500/30">MCP</span>
+                        <span class="skill-tag px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm border border-purple-500/30">Agentic Workflows</span>
+                        <span class="skill-tag px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm border border-purple-500/30">LangChain</span>
+                        <span class="skill-tag px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm border border-purple-500/30">Vector Databases</span>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3>Machine Learning & Deep Learning</h3>
-                    <div class="skill-tags">
-                        <span class="tag">TensorFlow</span>
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">Scikit-learn</span>
-                        <span class="tag">Pandas</span>
-                        <span class="tag">NumPy</span>
-                        <span class="tag">Hyperparameter Tuning</span>
-                        <span class="tag">Model Evaluation</span>
-                        <span class="tag">Production ML Systems</span>
-                        <span class="tag">End-to-End ML</span>
+
+                <div class="glass-card rounded-2xl p-6 reveal">
+                    <h3 class="text-lg font-bold text-white mb-4">Machine Learning</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1 bg-pink-500/20 text-pink-300 rounded-full text-sm border border-pink-500/30">TensorFlow</span>
+                        <span class="skill-tag px-3 py-1 bg-pink-500/20 text-pink-300 rounded-full text-sm border border-pink-500/30">PyTorch</span>
+                        <span class="skill-tag px-3 py-1 bg-pink-500/20 text-pink-300 rounded-full text-sm border border-pink-500/30">Scikit-learn</span>
+                        <span class="skill-tag px-3 py-1 bg-pink-500/20 text-pink-300 rounded-full text-sm border border-pink-500/30">Pandas</span>
+                        <span class="skill-tag px-3 py-1 bg-pink-500/20 text-pink-300 rounded-full text-sm border border-pink-500/30">NumPy</span>
+                        <span class="skill-tag px-3 py-1 bg-pink-500/20 text-pink-300 rounded-full text-sm border border-pink-500/30">Production ML</span>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3>Computer Vision & Image Processing</h3>
-                    <div class="skill-tags">
-                        <span class="tag">OpenCV</span>
-                        <span class="tag">YOLOv8</span>
-                        <span class="tag">Thermal Imaging</span>
-                        <span class="tag">OCR (Tesseract)</span>
-                        <span class="tag">Image Segmentation</span>
-                        <span class="tag">Object Detection</span>
-                        <span class="tag">Image Classification</span>
-                        <span class="tag">Computer Vision Pipelines</span>
-                        <span class="tag">Document Intelligence</span>
+
+                <div class="glass-card rounded-2xl p-6 reveal">
+                    <h3 class="text-lg font-bold text-white mb-4">Computer Vision</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1 bg-cyan-500/20 text-cyan-300 rounded-full text-sm border border-cyan-500/30">OpenCV</span>
+                        <span class="skill-tag px-3 py-1 bg-cyan-500/20 text-cyan-300 rounded-full text-sm border border-cyan-500/30">YOLOv8</span>
+                        <span class="skill-tag px-3 py-1 bg-cyan-500/20 text-cyan-300 rounded-full text-sm border border-cyan-500/30">OCR/Tesseract</span>
+                        <span class="skill-tag px-3 py-1 bg-cyan-500/20 text-cyan-300 rounded-full text-sm border border-cyan-500/30">Image Segmentation</span>
+                        <span class="skill-tag px-3 py-1 bg-cyan-500/20 text-cyan-300 rounded-full text-sm border border-cyan-500/30">Object Detection</span>
+                        <span class="skill-tag px-3 py-1 bg-cyan-500/20 text-cyan-300 rounded-full text-sm border border-cyan-500/30">Document Intelligence</span>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3>Cloud Platforms & DevOps</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Microsoft Azure</span>
-                        <span class="tag">Azure VM</span>
-                        <span class="tag">Azure SQL</span>
-                        <span class="tag">Azure Databricks</span>
-                        <span class="tag">Azure Data Factory</span>
-                        <span class="tag">AWS</span>
-                        <span class="tag">Docker</span>
-                        <span class="tag">CI/CD</span>
+
+                <div class="glass-card rounded-2xl p-6 reveal">
+                    <h3 class="text-lg font-bold text-white mb-4">Cloud & DevOps</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-sm border border-emerald-500/30">Microsoft Azure</span>
+                        <span class="skill-tag px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-sm border border-emerald-500/30">Azure Databricks</span>
+                        <span class="skill-tag px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-sm border border-emerald-500/30">Azure Data Factory</span>
+                        <span class="skill-tag px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-sm border border-emerald-500/30">AWS</span>
+                        <span class="skill-tag px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-sm border border-emerald-500/30">Docker</span>
+                        <span class="skill-tag px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-sm border border-emerald-500/30">CI/CD</span>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3>Databases & Data Engineering</h3>
-                    <div class="skill-tags">
-                        <span class="tag">SQL</span>
-                        <span class="tag">Neo4j</span>
-                        <span class="tag">Elasticsearch</span>
-                        <span class="tag">ETL Pipelines</span>
-                        <span class="tag">Data Warehousing</span>
-                        <span class="tag">Master Data Management</span>
-                        <span class="tag">Supply Chain Optimization</span>
-                        <span class="tag">ERP Integration</span>
+
+                <div class="glass-card rounded-2xl p-6 reveal">
+                    <h3 class="text-lg font-bold text-white mb-4">Databases & Engineering</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1 bg-orange-500/20 text-orange-300 rounded-full text-sm border border-orange-500/30">SQL</span>
+                        <span class="skill-tag px-3 py-1 bg-orange-500/20 text-orange-300 rounded-full text-sm border border-orange-500/30">Neo4j</span>
+                        <span class="skill-tag px-3 py-1 bg-orange-500/20 text-orange-300 rounded-full text-sm border border-orange-500/30">Elasticsearch</span>
+                        <span class="skill-tag px-3 py-1 bg-orange-500/20 text-orange-300 rounded-full text-sm border border-orange-500/30">ETL Pipelines</span>
+                        <span class="skill-tag px-3 py-1 bg-orange-500/20 text-orange-300 rounded-full text-sm border border-orange-500/30">Data Warehousing</span>
+                        <span class="skill-tag px-3 py-1 bg-orange-500/20 text-orange-300 rounded-full text-sm border border-orange-500/30">ERP Integration</span>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3>Web Development & APIs</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Flask</span>
-                        <span class="tag">Streamlit</span>
-                        <span class="tag">Angular</span>
-                        <span class="tag">HTML</span>
-                        <span class="tag">CSS</span>
-                        <span class="tag">REST APIs</span>
-                        <span class="tag">API Development</span>
+            </div>
+
+            <!-- Education -->
+            <div class="mt-16 grid md:grid-cols-2 gap-8">
+                <div class="glass-card rounded-2xl p-8 reveal border-l-4 border-indigo-500">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">M.S. in Computer Science</h3>
+                            <p class="text-indigo-400">Cleveland State University</p>
+                        </div>
+                        <span class="text-slate-400 text-sm">2024</span>
                     </div>
+                    <p class="text-slate-400 text-sm mb-2">Cleveland, OH • GPA: 3.65 / 4.0</p>
+                    <p class="text-slate-500 text-sm">Advanced coursework in Machine Learning, Deep Learning, and Computer Vision</p>
                 </div>
-                <div class="skill-category">
-                    <h3>Analytics & Visualization</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Power BI</span>
-                        <span class="tag">Data Visualization</span>
-                        <span class="tag">Analytics</span>
-                        <span class="tag">Exploratory Data Analysis</span>
-                        <span class="tag">Statistical Analysis</span>
+
+                <div class="glass-card rounded-2xl p-8 reveal border-l-4 border-pink-500">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">B.E. in Electronics & Communication</h3>
+                            <p class="text-pink-400">Visvesvaraya Technological University</p>
+                        </div>
+                        <span class="text-slate-400 text-sm">2021</span>
                     </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Tools & Methodologies</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Git</span>
-                        <span class="tag">GitHub</span>
-                        <span class="tag">Jira</span>
-                        <span class="tag">Agile/Scrum</span>
-                        <span class="tag">Problem Solving</span>
-                        <span class="tag">Optimization</span>
-                        <span class="tag">Quick Learner</span>
-                        <span class="tag">AI-Powered Tools</span>
-                    </div>
+                    <p class="text-slate-400 text-sm mb-2">Karnataka, India • GPA: 8.67 / 10.0</p>
+                    <p class="text-slate-500 text-sm">Specialization in signal processing and digital electronics</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Endorsements Section -->
-    <!-- <section id="endorsements" class="endorsements">
-        <div class="container">
-            <h2 class="section-title">Top Endorsed Skills</h2>
-            <div class="endorsement-grid">
-                <div class="endorsement-card">
-                    <div class="endorsement-icon"><i class="fas fa-brain"></i></div>
-                    <h3>Machine Learning</h3>
-                    <p>Endorsed 45+ times</p>
-                </div>
-                <div class="endorsement-card">
-                    <div class="endorsement-icon"><i class="fas fa-eye"></i></div>
-                    <h3>Computer Vision</h3>
-                    <p>Endorsed 38+ times</p>
-                </div>
-                <div class="endorsement-card">
-                    <div class="endorsement-icon"><i class="fas fa-code"></i></div>
-                    <h3>Python</h3>
-                    <p>Endorsed 42+ times</p>
-                </div>
-                <div class="endorsement-card">
-                    <div class="endorsement-icon"><i class="fas fa-cloud"></i></div>
-                    <h3>Azure</h3>
-                    <p>Endorsed 35+ times</p>
-                </div>
-                <div class="endorsement-card">
-                    <div class="endorsement-icon"><i class="fas fa-file-alt"></i></div>
-                    <h3>OCR & Document Processing</h3>
-                    <p>Endorsed 32+ times</p>
-                </div>
-                <div class="endorsement-card">
-                    <div class="endorsement-icon"><i class="fas fa-cube"></i></div>
-                    <h3>Deep Learning</h3>
-                    <p>Endorsed 40+ times</p>
-                </div>
-                <div class="endorsement-card">
-                    <div class="endorsement-icon"><i class="fas fa-database"></i></div>
-                    <h3>Data Engineering</h3>
-                    <p>Endorsed 28+ times</p>
-                </div>
-                <div class="endorsement-card">
-                    <div class="endorsement-icon"><i class="fas fa-robot"></i></div>
-                    <h3>Generative AI & LLMs</h3>
-                    <p>Endorsed 36+ times</p>
-                </div>
-                <div class="endorsement-card">
-                    <div class="endorsement-icon"><i class="fas fa-chart-line"></i></div>
-                    <h3>Data Analysis</h3>
-                    <p>Endorsed 25+ times</p>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-container">
-                <!-- Generative AI & LLM Projects -->
-                <div class="project-category">
-                    <h3 class="category-title">Generative AI & LLM</h3>
-                    <div class="project-list">
-                        <div class="project-card-collapsed">
-                            <div class="project-header" onclick="toggleProjectDetails(this)">
-                                <span class="project-toggle">▶</span>
-                                <span class="project-name">Developer Experience Platform (GenAI + RAG)</span>
-                            </div>
-                            <div class="project-details">
-                                <div class="project-description">
-                                    <ul class="project-points">
-                                        <li>Architected and led the development of a GenAI-powered Developer Experience (DevEx) platform consisting of 11 intelligent agents designed for role-based enterprise workflows across 5+ user profiles including Developers, Engineering, QA, Project Management, Marketing, and Application Support</li>
-                                        <li>Designed an agent-based GenAI architecture supporting 200+ active users, enabling scalable, secure, and persona-driven interactions across multiple teams</li>
-                                        <li>Built developer productivity agents, including a Coding Assist Agent for automated code clarity, refactoring suggestions, and documentation generation, and a Git Scanner Agent to analyze repository structures and accelerate onboarding by 50% without direct code access</li>
-                                        <li>Implemented engineering intelligence agents such as a PDF QA Agent enabling natural-language querying across technical specifications and reports, and a Code Quality Agent to detect technical debt, maintainability risks, and code smells from Git repositories</li>
-                                        <li>Developed project management automation via a Jira Agent that auto-created and managed tickets, integrated Jira and Confluence workflows, and reduced manual task creation effort by 60%</li>
-                                        <li>Built QA automation agents, including a Test Case Generation Agent that converts requirements into structured test cases, improving test coverage by 40% and significantly reducing QA cycle time</li>
-                                        <li>Delivered application support agents for real-time analytics, KPI dashboards, hardware monitoring (GPU, memory, disk), and operational observability across environments</li>
-                                        <li>Implemented a real-time Alert Agent to notify users of failures, performance degradation, and critical system events, enabling faster incident response</li>
-                                        <li>Integrated RAG-based LLM pipelines with enterprise knowledge sources, improving response accuracy by 35% and ensuring secure, context-aware AI interactions</li>
-                                        <li>Built centralized user management and role-based access control (RBAC) supporting 200+ users, ensuring secure feature access across all DevEx agents</li>
-                                        <li>Drove company-wide adoption across multiple departments, achieving a measured 60% improvement in developer and operational productivity through automation of repetitive workflows and faster access to contextual intelligence</li>
-                                    </ul>
-                                </div>
-                                <div class="project-meta">
-                                    <div class="project-tags">
-                                        <span class="tag">Python Programming</span>
-                                        <span class="tag">Machine Learning & Model Evaluation</span>
-                                        <span class="tag">Generative AI & LLMs</span>
-                                        <span class="tag">Data Pipelines & Data Engineering</span>
-                                        <span class="tag">System Design & Scalable Architecture</span>
-                                        <span class="tag">Agentic AI & Workflow Automation</span>
-                                        <span class="tag">Cloud Computing (Azure)</span>
-                                        <span class="tag">MLOps & Model Deployment</span>
-                                        <span class="tag">Leadership & Technical Ownership</span>
-                                        <span class="tag">Communication & Cross-Functional Collaboration</span>
-                                    </div>
-                                    <div class="project-links">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Computer Vision & Deep Learning Projects -->
-                <div class="project-category">
-                    <h3 class="category-title">Computer Vision & Deep Learning</h3>
-                    <div class="project-list">
-                        <div class="project-card-collapsed">
-                            <div class="project-header" onclick="toggleProjectDetails(this)">
-                                <span class="project-toggle">▶</span>
-                                <span class="project-name">Counterfeit Detection Algorithm</span>
-                            </div>
-                            <div class="project-details">
-                                <div class="project-description"><p>
-                                    <p>Re-engineered legacy rules-based matching engine with advanced computer vision pipelines and multilingual OCR. Improved accuracy from 80% to 95%, reduced latency by 60%, now supporting 150+ SKUs with forensic anomaly detection techniques.</p></div><div class="project-meta"><div class="project-tags">
-                                        <span class="tag">Computer Vision</span>
-                                        <span class="tag">OCR</span>
-                                        <span class="tag">Deep Learning</span>
-                                        <span class="tag">Python</span>
-                                    </div>
-                                    <div class="project-links">
-                                    </div></div>
-                            </div>
-                        </div>
-
-                        <div class="project-card-collapsed">
-                            <div class="project-header" onclick="toggleProjectDetails(this)">
-                                <span class="project-toggle">▶</span>
-                                <span class="project-name">ThermovisionAI</span>
-                            </div>
-                            <div class="project-details">
-                                <div class="project-description"><p>
-                                    <p>Applied YOLOv8 with fused thermal and visual imagery to detect objects near autonomous vehicles. Conducted comparative analysis to improve detection accuracy in challenging thermal imaging scenarios.</p></div><div class="project-meta"><div class="project-tags">
-                                        <span class="tag">YOLOv8</span>
-                                        <span class="tag">Computer Vision</span>
-                                        <span class="tag">Thermal Imaging</span>
-                                        <span class="tag">PyTorch</span>
-                                    </div>
-                                    <div class="project-links">
-                                    </div></div>
-                            </div>
-                        </div>
-                        
-                        <div class="project-card-collapsed">
-                            <div class="project-header" onclick="toggleProjectDetails(this)">
-                                <span class="project-toggle">▶</span>
-                                <span class="project-name">MobileWizard - Self Training App</span>
-                            </div>
-                            <div class="project-details">
-                                <div class="project-description">
-                                    <ul class="project-points">
-                                        <li>Flask-based web app for image annotation, model training, parameter monitoring and visualizing metrics for deep learning models (object detection, image segmentation) using TensorFlow Lite Model Maker</li>
-                                        <li>Created iOS and Android apps in Swift and Kotlin respectively, enabling real-time predictions using models trained on the web app, along with dynamic validation and retraining capabilities</li>
-                                        <li>Designed intuitive interfaces for all platforms, allowing users to easily upload images, validate predictions, and submit images for model refinement, garnering positive user feedback</li>
-                                        <li>Comprehensive technology stack including Flask, TensorFlow Lite, Swift, Kotlin, iOS, Android, Python, and Azure integration</li>
-                                    </ul>
-                                </div>
-                                <div class="project-meta">
-                                    <div class="project-tags">
-                                        <span class="tag">Flask</span>
-                                        <span class="tag">TensorFlow Lite</span>
-                                        <span class="tag">Swift</span>
-                                        <span class="tag">Kotlin</span>
-                                        <span class="tag">iOS</span>
-                                        <span class="tag">Android</span>
-                                        <span class="tag">Deep Learning</span>
-                                        <span class="tag">Python</span>
-                                        <span class="tag">Azure</span>
-                                    </div>
-                                    <div class="project-links">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-card-collapsed">
-                            <div class="project-header" onclick="toggleProjectDetails(this)">
-                                <span class="project-toggle">▶</span>
-                                <span class="project-name">Classification Backbone Networks</span>
-                            </div>
-                            <div class="project-details">
-                                <div class="project-description">
-                                    <ul class="project-points">
-                                        <li>Instrumental in developing comprehensive codebase for cutting-edge classification backbone networks empowering company's machine learning capabilities</li>
-                                        <li>Implemented service files functioning as APIs offering streamlined solution for model training with effortless training data and parameter configuration</li>
-                                        <li>Built system compatible with wide array of TensorFlow classification models from established to latest advancements</li>
-                                        <li>Designed user-friendly interface abstracting complexities of model training, making it accessible to non-experts for efficient tailored model development</li>
-                                    </ul>
-                                </div>
-                                <div class="project-meta">
-                                    <div class="project-tags">
-                                        <span class="tag">TensorFlow</span>
-                                        <span class="tag">Deep Learning</span>
-                                        <span class="tag">Python</span>
-                                        <span class="tag">API Development</span>
-                                        <span class="tag">Flask</span>
-                                        <span class="tag">Artificial Intelligence</span>
-                                    </div>
-                                    <div class="project-links">
-                                    </div></div>
-                            </div>
-                        </div>
-
-                        <div class="project-card-collapsed">
-                            <div class="project-header" onclick="toggleProjectDetails(this)">
-                                <span class="project-toggle">▶</span>
-                                <span class="project-name">Object Measurement Prediction</span>
-                            </div>
-                            <div class="project-details">
-                                <div class="project-description">
-                                    <ul class="project-points">
-                                        <li>Research on advanced methods for predicting measurements of target objects in images and video without requiring measured reference objects</li>
-                                        <li>Leveraged ancillary sensors on mobile devices including accelerometer, gyroscope, and proximity sensors for accurate dimension calculation</li>
-                                        <li>Developed pipeline for finding accurate measurements of objects in real-time scenarios with high precision</li>
-                                        <li>Applied computer vision and deep learning techniques to enable accurate object measurement prediction independent of reference objects</li>
-                                    </ul>
-                                </div>
-                                <div class="project-meta">
-                                    <div class="project-tags">
-                                        <span class="tag">Computer Vision</span>
-                                        <span class="tag">Deep Learning</span>
-                                        <span class="tag">Python</span>
-                                        <span class="tag">Research Skills</span>
-                                        <span class="tag">Mobile Sensors</span>
-                                    </div>
-                                    <div class="project-links">
-                                        <a href="https://github.com/nkuruba" class="link-btn"><i class="fab fa-github"></i> Code</a>
-                                    </div></div>
-                            </div>
-                        </div>
-
-                        <div class="project-card-collapsed">
-                            <div class="project-header" onclick="toggleProjectDetails(this)">
-                                <span class="project-toggle">▶</span>
-                                <span class="project-name">Rice Plant Disease Detection</span>
-                            </div>
-                            <div class="project-details">
-                                <div class="project-description">
-                                    <ul class="project-points">
-                                        <li>Trained Convolutional Neural Networks for detection of healthy and diseased rice leaves with high accuracy classification</li>
-                                        <li>Developed classification capabilities for 4 distinct disease types affecting rice plants enabling accurate disease identification</li>
-                                        <li>Built computer vision pipeline enabling automated disease identification to support agricultural productivity and early intervention</li>
-                                        <li>Created end-to-end system supporting farmers in monitoring plant health and making timely treatment decisions</li>
-                                    </ul>
-                                </div>
-                                <div class="project-meta">
-                                    <div class="project-tags">
-                                        <span class="tag">CNN</span>
-                                        <span class="tag">Computer Vision</span>
-                                        <span class="tag">Deep Learning</span>
-                                        <span class="tag">Agriculture</span>
-                                        <span class="tag">Python</span>
-                                    </div>
-                                    <div class="project-links">
-                                    </div></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Data Engineering & Analytics Projects -->
-                <div class="project-category">
-                    <h3 class="category-title">Data Engineering & Analytics</h3>
-                    <div class="project-list">
-                        <div class="project-card-collapsed">
-                            <div class="project-header" onclick="toggleProjectDetails(this)">
-                                <span class="project-toggle">▶</span>
-                                <span class="project-name">Clear-to-Build (CTB) for IFS ERP</span>
-                            </div>
-                            <div class="project-details">
-                                <div class="project-description">
-                                    <ul class="project-points">
-                                        <li>Designed and developed a Python-based Clear-to-Build (CTB) planning module for IFS ERP using core MRP principles to support production and shipment readiness decisions</li>
-                                        <li>Implemented automated shortage identification logic by analyzing demand, inventory, and supply data across the complete planning horizon</li>
-                                        <li>Built a time-phased shortage analysis framework that categorized constraints into weekly buckets with dynamic prioritization based on material criticality and demand urgency</li>
-                                        <li>Generated an intelligent CTB schedule to identify fully available orders ready for manufacturing or dispatch, improving production planning accuracy</li>
-                                        <li>Improved end-to-end planning visibility and decision-making, significantly reducing manual analysis effort and enabling faster, data-driven supply chain operations</li>
-                                    </ul>
-                                </div><div class="project-meta"><div class="project-tags">
-                                        <span class="tag">Data Pipeline</span>
-                                        <span class="tag">SQL</span>
-                                        <span class="tag">Azure Databricks</span>
-                                        <span class="tag">ERP</span>
-                                        <span class="tag">Python</span>
-                                        <span class="tag">MRP</span>
-                                    </div>
-                                    <div class="project-links">
-                                    </div></div>
-                            </div>
-                        </div>
-
-                        <div class="project-card-collapsed">
-                            <div class="project-header" onclick="toggleProjectDetails(this)">
-                                <span class="project-toggle">▶</span>
-                                <span class="project-name">Supplier Recommendation System</span>
-                            </div>
-                            <div class="project-details">
-                                <div class="project-description">
-                                    <ul class="project-points">
-                                        <li>Recommendation engine considering supplier capability to supply large quantities at affordable prices while maintaining quality standards</li>
-                                        <li>Built Python-based recommendation engine and replicated same logic with Neo4j graph database for scalable supplier analysis</li>
-                                        <li>Analyzed business value and productivity metrics alongside order volumes and delivery performance for optimal supplier selection</li>
-                                        <li>Transformed company's supplier relationships resulting in annual cost savings of approximately $100 million through strategic optimization</li>
-                                    </ul>
-                                </div>
-                                <div class="project-meta">
-                                    <div class="project-tags">
-                                        <span class="tag">Neo4j</span>
-                                        <span class="tag">Python</span>
-                                        <span class="tag">Graph Algorithms</span>
-                                        <span class="tag">Graph Databases</span>
-                                        <span class="tag">Data Engineering</span>
-                                    </div>
-                                    <div class="project-links">
-                                    </div></div>
-                            </div>
-                        </div>
-
-                        <div class="project-card-collapsed">
-                            <div class="project-header" onclick="toggleProjectDetails(this)">
-                                <span class="project-toggle">▶</span>
-                                <span class="project-name">Master Data Management Platform</span>
-                            </div>
-                            <div class="project-details">
-                                <div class="project-description">
-                                    <ul class="project-points">
-                                        <li>Orchestrated collection, transformation, and loading of data from diverse government sources into centralized repository with Python-based web scraping and data extraction</li>
-                                        <li>Utilized Python to map company names, subsidiaries, and establish transparent parent-company relationships through government website integration</li>
-                                        <li>Spearheaded integration of robust order mapping system creating linkages between orders and parent companies, developing unified dataset with holistic view of business relationships</li>
-                                        <li>Automated data loading to Azure SQL Database using Azure Databricks and Data Factory pipelines with daily updates, data validation, scalability optimization, and significant impact on organizational data-driven decision-making</li>
-                                    </ul>
-                                </div>
-                                <div class="project-meta">
-                                    <div class="project-tags">
-                                        <span class="tag">Python</span>
-                                        <span class="tag">Azure Databricks</span>
-                                        <span class="tag">Azure Data Factory</span>
-                                        <span class="tag">SQL Database</span>
-                                        <span class="tag">Web Scraping</span>
-                                        <span class="tag">Data Engineering</span>
-                                        <span class="tag">Microsoft Excel</span>
-                                    </div>
-                                    <div class="project-links">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Healthcare & Medical AI Projects -->
-                <div class="project-category">
-                    <h3 class="category-title">Healthcare & Medical AI</h3>
-                    <div class="project-list">
-                        <div class="project-card-collapsed">
-                            <div class="project-header" onclick="toggleProjectDetails(this)">
-                                <span class="project-toggle">▶</span>
-                                <span class="project-name">Health Report Summarization System</span>
-                            </div>
-                            <div class="project-details">
-                                <div class="project-description">
-                                    <ul class="project-points">
-                                        <li>Led development of sophisticated Flask-based web application for efficient analysis of medical reports with advanced image segmentation</li>
-                                        <li>Integrated Tesseract OCR ensuring high-precision text extraction from diverse medical documents enhancing interpretative capabilities</li>
-                                        <li>Successfully addressed key-value and parameter extraction from medical reports with summarization module generating comprehensive medical information overviews</li>
-                                        <li>Incorporated language localization feature enabling users to convert extracted text and summaries into preferred language fostering accessibility among diverse users</li>
-                                    </ul>
-                                </div>
-                                <div class="project-meta">
-                                    <div class="project-tags">
-                                        <span class="tag">Flask</span>
-                                        <span class="tag">Deep Learning</span>
-                                        <span class="tag">OCR</span>
-                                        <span class="tag">NLP</span>
-                                        <span class="tag">Medical Imaging</span>
-                                        <span class="tag">Python</span>
-                                        <span class="tag">Image Segmentation</span>
-                                    </div>
-                                    <div class="project-links">
-                                    </div></div>
-                            </div>
-                        </div>
-
-                        <div class="project-card-collapsed">
-                            <div class="project-header" onclick="toggleProjectDetails(this)">
-                                <span class="project-toggle">▶</span>
-                                <span class="project-name">Early Glaucoma Detection</span>
-                            </div>
-                            <div class="project-details">
-                                <div class="project-description">
-                                    <ul class="project-points">
-                                        <li>Developed advanced OCT image processing pipeline for retinal nerve fiber layer thickness calculation using OpenCV</li>
-                                        <li>Research focused on early glaucoma detection improvement through precise medical image analysis and deep learning techniques</li>
-                                        <li>Implemented automated diagnostic algorithms enhancing precision for early disease detection enabling timely intervention</li>
-                                        <li>Contributed to healthcare innovation improving diagnostic precision enhancement for better patient outcomes and quality of life</li>
-                                    </ul>
-                                </div>
-                                <div class="project-meta">
-                                    <div class="project-tags">
-                                        <span class="tag">Medical Imaging</span>
-                                        <span class="tag">OpenCV</span>
-                                        <span class="tag">Deep Learning</span>
-                                        <span class="tag">Healthcare</span>
-                                        <span class="tag">Python</span>
-                                    </div>
-                                    <div class="project-links">
-                                        <a href="https://github.com/nkuruba" class="link-btn"><i class="fab fa-github"></i> Code</a>
-                                    </div></div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <!-- Full-Stack Development Projects -->
-                <div class="project-category">
-                    <h3 class="category-title">Full-Stack Development</h3>
-                    <div class="project-list">
-                        
-
-                        <div class="project-card-collapsed">
-                            <div class="project-header" onclick="toggleProjectDetails(this)">
-                                <span class="project-toggle">▶</span>
-                                <span class="project-name">EduLearn - Online Classroom Platform</span>
-                            </div>
-                            <div class="project-details">
-                                <div class="project-description">
-                                    <ul class="project-points">
-                                        <li>Developed robust web application utilizing Angular, meticulously replicating Google Classroom functionalities for comprehensive online education platform</li>
-                                        <li>Seamlessly mimicked Google Classroom's core functionalities, providing familiar and intuitive online learning environment for teachers and students</li>
-                                        <li>Incorporated innovative Discussion Groups feature enabling students to create and participate in collaborative discussions, fostering engagement and knowledge sharing beyond traditional classroom</li>
-                                        <li>Designed intuitive user interface with focus on accessibility and seamless navigation, ensuring smooth user experience for educators and learners</li>
-                                    </ul>
-                                </div>
-                                <div class="project-meta">
-                                    <div class="project-tags">
-                                        <span class="tag">Angular</span>
-                                        <span class="tag">AngularJS</span>
-                                        <span class="tag">Angular CLI</span>
-                                        <span class="tag">Web Development</span>
-                                        <span class="tag">EdTech</span>
-                                        <span class="tag">TypeScript</span>
-                                    </div>
-                                    <div class="project-links">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Let's Work Together</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
+    <section id="contact" class="py-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card rounded-3xl p-8 md:p-12 text-center reveal">
+                <h2 class="font-display text-4xl font-bold text-white mb-4">Let's Work <span class="gradient-text">Together</span></h2>
+                <p class="text-slate-400 mb-8">Open to opportunities in AI/ML, GenAI, and Computer Vision</p>
+                
+                <div class="grid md:grid-cols-3 gap-6 mb-12 text-left">
+                    <div class="glass rounded-xl p-4 flex items-center gap-3">
+                        <i class="fas fa-envelope text-indigo-400 text-xl"></i>
                         <div>
-                            <h3>Email</h3>
-                            <p>nkuruba2000@gmail.com</p>
+                            <p class="text-white text-sm font-semibold">Email</p>
+                            <p class="text-slate-400 text-xs">nkuruba2000@gmail.com</p>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
+                    <div class="glass rounded-xl p-4 flex items-center gap-3">
+                        <i class="fas fa-phone text-indigo-400 text-xl"></i>
                         <div>
-                            <h3>Phone</h3>
-                            <p>+1 (216) 466-5530</p>
+                            <p class="text-white text-sm font-semibold">Phone</p>
+                            <p class="text-slate-400 text-xs">+1 (216) 466-5530</p>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
+                    <div class="glass rounded-xl p-4 flex items-center gap-3">
+                        <i class="fas fa-map-marker-alt text-indigo-400 text-xl"></i>
                         <div>
-                            <h3>Location</h3>
-                            <p>Boston, MA</p>
+                            <p class="text-white text-sm font-semibold">Location</p>
+                            <p class="text-slate-400 text-xs">Boston, MA</p>
                         </div>
                     </div>
                 </div>
-                <form name="contact" method="POST" data-netlify="true" class="contact-form" id="contactForm">
-                    <p>
-                        <label>Your Name: <input type="text" name="name" required /></label>
-                    </p>
-                    <p>
-                        <label>Your Email: <input type="email" name="email" required /></label>
-                    </p>
-                    <p>
-                        <label>Message: <textarea name="message" required></textarea></label>
-                    </p>
-                    <p>
-                        <button type="submit" class="btn btn-primary">Send</button>
-                    </p>
+
+                <form name="contact" method="POST" data-netlify="true" class="space-y-4 text-left max-w-lg mx-auto">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-400 mb-1">Your Name</label>
+                        <input type="text" name="name" required class="w-full px-4 py-3 rounded-lg bg-slate-800/50 border border-white/10 text-white focus:outline-none focus:border-indigo-500 transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-400 mb-1">Your Email</label>
+                        <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg bg-slate-800/50 border border-white/10 text-white focus:outline-none focus:border-indigo-500 transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-400 mb-1">Message</label>
+                        <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-lg bg-slate-800/50 border border-white/10 text-white focus:outline-none focus:border-indigo-500 transition-colors"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-4 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg text-white font-semibold hover:shadow-lg hover:shadow-indigo-500/25 transition-all transform hover:scale-[1.02] btn-glow">
+                        Send Message
+                    </button>
                 </form>
+
+                <div class="flex justify-center gap-6 mt-12">
+                    <a href="https://github.com/nkuruba" target="_blank" class="w-12 h-12 rounded-full glass flex items-center justify-center text-slate-400 hover:text-white hover:border-indigo-500/50 transition-all border border-white/5">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/nkuruba" target="_blank" class="w-12 h-12 rounded-full glass flex items-center justify-center text-slate-400 hover:text-white hover:border-indigo-500/50 transition-all border border-white/5">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2026 Naveen Kumar Kuruba. All rights reserved.</p>
-            <div class="footer-social">
-                <a href="https://github.com" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com/in/nkuruba" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:nkuruba2000@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-            </div>
-        </div>
+    <footer class="py-8 text-center text-slate-600 text-sm border-t border-white/5">
+        <p>&copy; 2026 Naveen Kumar Kuruba. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Initialize GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Typing Effect
+        const words = ["Intelligent Systems", "GenAI Solutions", "Computer Vision Systems", "Scalable ML Platforms", "Innovative AI Applications"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById('typing-text');
+
+        function type() {
+            const currentWord = words[wordIndex];
+            
+            if (isDeleting) {
+                typingElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        setTimeout(type, 1000);
+
+        // Reveal Animations
+        gsap.utils.toArray('.reveal').forEach(element => {
+            gsap.fromTo(element, 
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
+
+        // Text reveal
+        gsap.from(".reveal-text > *", {
+            opacity: 0,
+            y: 30,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "power3.out",
+            delay: 0.5
+        });
+
+        gsap.from(".reveal-image", {
+            opacity: 0,
+            x: 50,
+            duration: 1,
+            ease: "power3.out",
+            delay: 0.8
+        });
+
+        // Counter Animation
+        const counters = document.querySelectorAll('[data-count]');
+        counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-count'));
+            gsap.to(counter, {
+                innerHTML: target,
+                duration: 2,
+                snap: { innerHTML: 1 },
+                scrollTrigger: {
+                    trigger: counter,
+                    start: "top 85%"
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.pageYOffset > 100) {
+                navbar.classList.add('shadow-lg', 'shadow-indigo-500/10');
+            } else {
+                navbar.classList.remove('shadow-lg', 'shadow-indigo-500/10');
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Create floating particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Project Toggle Functionality
+        function toggleProject(header) {
+            const card = header.parentElement;
+            const content = card.querySelector('.expandable-content');
+            const toggle = header.querySelector('.project-toggle');
+            
+            // Close all other projects in the same section
+            const siblings = card.parentElement.querySelectorAll('.glass-card');
+            siblings.forEach(sibling => {
+                if (sibling !== card) {
+                    const siblingContent = sibling.querySelector('.expandable-content');
+                    const siblingToggle = sibling.querySelector('.project-toggle');
+                    if (siblingContent.classList.contains('active')) {
+                        siblingContent.classList.remove('active');
+                        siblingToggle.classList.remove('active');
+                    }
+                }
+            });
+            
+            // Toggle current
+            content.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
